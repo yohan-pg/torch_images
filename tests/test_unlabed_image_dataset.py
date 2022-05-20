@@ -18,3 +18,9 @@ def test_regular_folder():
 
 def test_zip_folder():
     _test("tests/data/folder.zip")
+
+
+def test_split():
+    train_data, test_data = UnlabledImageDataset("tests/data/folder").split("**/subfolder/**")
+    assert len(train_data) == 1
+    assert len(test_data) == 2
